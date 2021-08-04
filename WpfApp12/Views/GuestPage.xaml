@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfApp12.Views.GuestPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp12.Views" xmlns:ie1="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="GuestPage" Height="700" Width="900">
+    <Grid Background="AntiqueWhite">
+        
+        <StackPanel Margin="0,5">
+            <Button Margin="0,14" Width="100" Height="30" Background="red" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding ExitClick}">X</Button>
+            <WrapPanel HorizontalAlignment="Center">
+
+                <StackPanel>
+                    <Image Height="220" Width="180" Source="{Binding FirstFilm.ImagePath,UpdateSourceTrigger=PropertyChanged}"></Image>
+                    <TextBlock FontSize="25" FontFamily="Courier New">Name</TextBlock>
+                    <TextBlock FontSize="25" FontWeight="ExtraBlack" Text="{Binding FirstFilm.Name,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                    <TextBlock FontSize="25" FontFamily="Courier New">Genre</TextBlock>
+                    <TextBlock FontSize="25" FontWeight="ExtraBlack" Text="{Binding FirstFilm.Genre,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                    <TextBlock></TextBlock>
+                </StackPanel>
+
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Command="{Binding Prev}" FontSize="20" FontFamily="Courier New" FontWeight="Black" >↤</Button>
+                <Button Command="{Binding OrderCommand}" FontSize="20" FontFamily="Courier New" FontWeight="Black">Order Film Ticket</Button>
+                <Button Command="{Binding Next}" FontSize="20" FontFamily="Courier New" FontWeight="Black">↦</Button>
+                <ListBox ItemsSource="{Binding FirstFilm.Ordered,UpdateSourceTrigger=PropertyChanged}" Width="300" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="200">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox FontWeight="ExtraBlack" Content="{Binding Name}" IsChecked="{Binding isChecked,Mode=TwoWay}" IsEnabled="{Binding isReserved}" Style="{StaticResource MaterialDesignActionDarkCheckBox}" ToolTip="MaterialDesignActionDarkCheckBox"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
