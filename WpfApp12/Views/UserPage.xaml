@@ -51,7 +51,7 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <ListBox Background="#a2a392" Height="500" BorderBrush="#D4CDC3" BorderThickness="5" IsEnabled="False">
+                        <ListBox Background="#a2a392" Height="270" BorderBrush="#D4CDC3" BorderThickness="5" IsEnabled="False">
 
 
                             <Image Margin="5" Height="150" Width="100" Source="{Binding ImagePath}"></Image>
