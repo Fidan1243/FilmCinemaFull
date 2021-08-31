@@ -97,13 +97,32 @@ namespace WpfApp12.ViewModels
                 };
                 if (IsAdmin)
                 {
-                    Users.Add(User);
+                    var user = Users.SingleOrDefault((e1) => e1.Email == SignUN && e1.Password == SignPassW);
+                    if (user != null)
+                    {
+                        MessageBox.Show("This User is already exists");
+                    }
+                    else
+                    {
+                        Users.Add(User);
+
+                        MessageBox.Show("Added to system");
+                    }
                 }
                 else
                 {
-                    Guests.Add(User);
+                    var user = Guests.SingleOrDefault((e1) => e1.Email == SignUN && e1.Password == SignPassW);
+                    if (user != null)
+                    {
+                        MessageBox.Show("This Guest is already exists");
+                    }
+                    else
+                    {
+                        Guests.Add(User);
+
+                        MessageBox.Show("Added to system");
+                    }
                 }
-                MessageBox.Show("Added to system");
             });
         }
     }
